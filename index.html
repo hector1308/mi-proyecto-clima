@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimApp - Sistema de Información Climática</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+</head>
+<body>
+    <div class="app">
+        <header class="header" role="banner">
+            <div class="app__container header__container">
+                <div class="header__logo" aria-label="Logotipo de ClimApp">
+                    <span class="header__logo-icon icon-logo" role="img" aria-label="Logo"></span>
+                    ClimApp
+                </div>
+                <nav class="header__nav nav" aria-label="Navegación principal">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__link nav__link--active" id="homeLink">Inicio</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link" id="mapLink">Mapa</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Historial</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Alertas</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Configuración</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="main" role="main">
+            <div class="app__container">
+                <section class="loading hidden" id="loadingState" aria-hidden="true">
+                    <div class="loading__spinner" aria-label="Cargando..."></div>
+                    <p class="loading__text">Cargando datos del clima...</p>
+                </section>
+                <section class="error hidden" id="errorState" aria-hidden="true" role="alert">
+                    <div class="error__icon icon-error" role="img" aria-label="Ícono de error"></div>
+                    <h2 class="error__title">Error al cargar los datos</h2>
+                    <p class="error__message">No pudimos obtener la información del clima. Por favor, verifica tu conexión e inténtalo nuevamente.</p>
+                    <button class="error__button" id="retryButton" type="button">Intentar nuevamente</button>
+                </section>
+            </div>
+        </main>
+        <section class="map-section" id="mapSection">
+            <h2 class="forecast__title">Mapa meteorológico en tiempo real</h2>
+            <div class="map-controls">
+                <div class="map-controls__group">
+                    <label class="map-controls__label">Capa:</label>
+                    <select class="map-controls__select" id="mapLayerSelect">
+                        <option value="temp">Temperatura</option>
+                        <option value="clouds">Nubes</option>
+                        <option value="precipitation">Precipitación</option>
+                        <option value="wind">Viento</option>
+                        <option value="pressure">Presión</option>
+                    </select>
+                </div>
+                <div class="map-controls__group">
+                    <label class="map-controls__label">Zoom:</label>
+                    <select class="map-controls__select" id="mapZoomSelect">
+                        <option value="3">País</option>
+                        <option value="5">Región</option>
+                        <option value="7">Ciudad</option>
+                        <option value="10">Barrio</option>
+                    </select>
+                </div>
+            </div>
+            <div class="map-container">
+                <div id="weatherMap"></div>
+            </div>
+        </section>
+        <footer class="footer" role="contentinfo">
+            <div class="app__container footer__container">
+                <section class="footer__section">
+                    <h3 class="footer__title">Acerca de</h3>
+                    <p>ClimApp es una aplicación para consultar información climática en tiempo real.</p>
+                </section>
+                <section class="footer__section">
+                    <h3 class="footer__title">Enlaces útiles</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="#" class="footer__link">Política de privacidad</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Términos de uso</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Contacto</a></li>
+                    </ul>
+                </section>
+                <section class="footer__section">
+                    <h3 class="footer__title">Síguenos</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="#" class="footer__link">Facebook</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Twitter</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">Instagram</a></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="footer__copyright">
+                &copy; 2023 ClimApp. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="app.js" defer></script>
+</body>
+</html>
