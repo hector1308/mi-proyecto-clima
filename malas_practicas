@@ -1,0 +1,42 @@
+ Estructura general
+Falta de separación de preocupaciones
+Aunque el diseño está bien estructurado, se nota que hay mucho contenido fijo (por ejemplo, temperaturas, ubicaciones y alertas) que probablemente deberían venir de JavaScript o de un backend. Evitar contenido "hardcoded" facilita el mantenimiento y escalabilidad.
+
+IDs duplicados en elementos que se repiten
+
+Ejemplo: los id="weatherIcon", id="locationName" o id="locationInput" no deberían repetirse si se usan en múltiples instancias dinámicas.
+
+Recomendación: usa clases o genera los IDs dinámicamente.
+
+🎯 Accesibilidad (a11y)
+Falta de etiquetas alt en íconos o imágenes
+Aunque estás usando íconos por clase (como icon-cloudy), considera usar elementos accesibles como aria-label o elementos role="img" con descripción.
+
+Falta de semántica HTML adicional
+Podrías usar más etiquetas como <section>, <article>, <aside> o <figure> para mejorar la estructura semántica y SEO.
+
+Botones sin tipo explícito
+Algunos botones (<button>) no especifican el atributo type="button", lo cual puede causar comportamientos inesperados si están dentro de formularios.
+
+💡 Mejores prácticas HTML
+Links vacíos (href="#")
+
+Esto rompe la experiencia del usuario y puede generar recarga de página.
+
+Recomendación: usar event.preventDefault() en el JS, o enlaces reales si están disponibles.
+
+No hay carga de JavaScript
+
+El HTML está listo para usar funcionalidades interactivas, pero no hay scripts cargados.
+
+Recomendación: agregar un <script src="app.js"></script> antes del cierre de </body> para mantener un código organizado.
+
+🎨 CSS y recursos externos
+Falta de CSS personalizado o local
+Solo se está cargando Leaflet. Asumo que usas estilos desde un archivo externo, pero no se incluye en este HTML.
+
+Recomendación: incluir tus propios estilos <link rel="stylesheet" href="styles.css"> para mantener el diseño consistente.
+
+Uso de clases muy específicas y largas
+
+Aunque esto no es una "mala práctica" como tal, puede hacer más difícil mantener los estilos si no usas una metodología clara como BEM o utility-first CSS como Tailwind.
